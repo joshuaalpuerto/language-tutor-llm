@@ -1,15 +1,8 @@
-import sys
-import logging
 import argparse
-from langchain.chat_models import ChatFireworks
 from chatbot import Chatbot
 
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s",
-        level=logging.INFO,
-    )
     # Create an ArgumentParser object
     parser = argparse.ArgumentParser(description="Your language teacher.")
 

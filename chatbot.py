@@ -22,7 +22,7 @@ class Chatbot:
         self.llm = Fireworks(
             fireworks_api_key=constants.FIREWORKS_API_KEY,
             model="accounts/fireworks/models/mixtral-8x7b-instruct",
-            model_kwargs={"temperature": 0.1, "max_tokens": 256, "top_p": 0.9},
+            model_kwargs={"temperature": 0.1, "max_tokens": 1024, "top_p": 0.9},
         )
         self.language = language
         self.verbose = verbose
@@ -36,7 +36,10 @@ class Chatbot:
             return_messages=True,
         )
 
-    def get_response(self, input):
+    def get_response(
+        self,
+        input,
+    ):
         chat_history = self.memory.buffer
         output = self._generate(input, chat_history)
 
