@@ -28,8 +28,6 @@ Just a quick note, I noticed a small typo in your message. You wrote "sobre relo
 >>> Teacher
 [/INST]"""
 
-INITIAL_MESSAGE = """Greet me."""
-
 
 DEFAULT_SUMMARIZER_TEMPLATE = """[INST]Progressively summarize the lines of conversation provided, adding onto the previous summary returning a new summary.
 

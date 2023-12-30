@@ -6,7 +6,7 @@ from langchain.prompts import PromptTemplate
 from langchain.llms import Fireworks
 
 import constants
-import prompts
+import prompts.mistral as prompts
 
 set_llm_cache(InMemoryCache())
 # Turn this on only if you want to debug other wise it's hard to see the conversations.
@@ -18,10 +18,17 @@ class Chatbot:
     This class is used to communicate with the tutor
     """
 
-    def __init__(self, language="Spanish", verbose=True):
+    def __init__(
+        self,
+        model="accounts/fireworks/models/mixtral-8x7b-instruct",
+        prompts=prompts,
+        language="Spanish",
+        verbose=True,
+    ):
+        self.prompts = prompts
         self.llm = Fireworks(
             fireworks_api_key=constants.FIREWORKS_API_KEY,
-            model="accounts/fireworks/models/mixtral-8x7b-instruct",
+            model=model,
             model_kwargs={"temperature": 0.1, "max_tokens": 1024, "top_p": 0.9},
         )
         self.language = language
@@ -31,7 +38,7 @@ class Chatbot:
             llm=self.llm,
             prompt=PromptTemplate(
                 input_variables=["summary", "new_lines"],
-                template=prompts.DEFAULT_SUMMARIZER_TEMPLATE,
+                template=self.prompts.DEFAULT_SUMMARIZER_TEMPLATE,
             ),
             return_messages=True,
         )
@@ -54,7 +61,7 @@ class Chatbot:
             llm=self.llm,
             prompt=PromptTemplate(
                 input_variables=["chat_history", "input"],
-                template=prompts.SYSTEM_PROMPT,
+                template=self.prompts.SYSTEM_PROMPT,
             ),
             verbose=self.verbose,
         )
