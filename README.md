@@ -1,1 +1,3 @@
-# Your LLM language tutor
+# Your language tutor
+
+Practice conversation using LLM
