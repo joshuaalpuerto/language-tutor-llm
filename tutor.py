@@ -15,7 +15,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     language = args.language
 
-    chatbot = Chatbot(language=language, verbose=False)
+    chatbot = Chatbot(
+        model="accounts/fireworks/models/mistral-7b-instruct-4k",
+        language=language,
+        verbose=False,
+    )
 
     finished = False
     while not finished:

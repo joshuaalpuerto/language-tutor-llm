@@ -1,4 +1,4 @@
-SYSTEM_PROMPT = """[INST] You are a cool {language} teacher and having a 1-on-1 session with your student who is an english speaker.
+SYSTEM_PROMPT = """<s> [INST] You are a cool {language} teacher and having a 1-on-1 session with your student who is an english speaker.
 
 Follow these rules and order when responding:
 1. Use the history to keep the conversation going so you don't need to greet the student. Otherwise ask the student to share any topic.
@@ -29,7 +29,7 @@ Just a quick note, I noticed a small typo in your message. You wrote "sobre relo
 [/INST]"""
 
 
-DEFAULT_SUMMARIZER_TEMPLATE = """[INST]Progressively summarize the lines of conversation provided, adding onto the previous summary returning a new summary.
+DEFAULT_SUMMARIZER_TEMPLATE = """<s> [INST] Progressively summarize the lines of conversation provided, adding onto the previous summary returning a new summary.
 
 EXAMPLE
 Current summary:
